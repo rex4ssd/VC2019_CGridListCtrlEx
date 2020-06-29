@@ -71,6 +71,13 @@ public:
 		}
 	}
 
+	void ShowAllDataModel()
+	{
+		for (int i = 0; i < m_Records.size(); i++) {
+
+		}
+	}
+
 	CString GetCellText(size_t lookupId, int col) const
 	{
 		if (lookupId >= m_Records.size())

@@ -7,17 +7,13 @@
 #define IDS_ABOUTBOX                    101
 #define IDD_MFCAPPLICATION1_DIALOG      102
 #define IDR_MAINFRAME                   128
-//#define IDI_ICON1                       131
 #define IDI_FLGDEN                      132
 #define IDI_FLGFRAN                     133
 #define IDI_FLGGERM                     134
 #define IDI_FLGGREEC                    135
 #define IDI_FLGSPAIN                    136
 #define IDI_FLGSWED                     137
-//#define IDC_LIST2                       1001
 #define IDC_LIST1                       1001
-
-
 
 // Next default values for new objects
 // 

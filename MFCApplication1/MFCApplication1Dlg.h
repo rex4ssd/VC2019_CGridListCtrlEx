@@ -45,4 +45,6 @@ private:
 	CListCtrl_DataModel m_DataModel;
 	CImageList m_ImageList;
 
+public:
+	afx_msg void OnBnClickedOk();
 };

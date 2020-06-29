@@ -76,6 +76,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	//ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST2, &CMFCApplication1Dlg::OnLvnItemchangedList2)
 	//ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST1, &CMFCApplication1Dlg::OnLvnItemchangedList1)
+	ON_BN_CLICKED(IDOK, &CMFCApplication1Dlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -135,6 +136,7 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	m_ListCtrl.InsertHiddenLabelColumn();	// Requires one never uses column 0
 
 
+	TRACE("GetColCount = %d\n", m_DataModel.GetColCount());
 	for (int col = 0; col < m_DataModel.GetColCount(); ++col)
 	{
 		const CString& title = m_DataModel.GetColTitle(col);
@@ -142,9 +144,14 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 		if (col == 0)	// Country
 		{
 			CGridColumnTraitCombo* pComboTrait = new CGridColumnTraitCombo;
+			pComboTrait->SetShowDropDown(TRUE);//REX
+			//pComboTrait->SetSingleClickEdit(TRUE);
+			//pComboTrait->SetStyle(2);
 			const vector<CString>& countries = m_DataModel.GetCountries();
-			for (size_t i = 0; i < countries.size(); ++i)
+			for (size_t i = 0; i < countries.size(); ++i) {
 				pComboTrait->AddItem((DWORD_PTR)i, countries[i]);
+				TRACE("countries[i] = %s\n", countries[i]);
+			}
 			pTrait = pComboTrait;
 		}
 		if (col == 1)	// City
@@ -180,6 +187,7 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 			int nCellCol = col + 1;	// +1 because of hidden column
 			const CString& strCellText = m_DataModel.GetCellText(rowId, col);
 			m_ListCtrl.SetItemText(nItem, nCellCol, strCellText);
+			TRACE("nItem = %d, nCellCol = %d, strCellText = %s\n", nItem, nCellCol, strCellText);
 			if (nCellCol == 3)
 			{
 				if (strCellText == _T(""))
@@ -263,4 +271,13 @@ void CMFCApplication1Dlg::OnLvnItemchangedList1(NMHDR* pNMHDR, LRESULT* pResult)
 	LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
 	// TODO: Add your control notification handler code here
 	*pResult = 0;
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedOk()
+{
+	// TODO: Add your control notification handler code here
+	//CDialogEx::OnOK();
+
+	m_ListCtrl.OnSaveStateColumnPick();// OnSaveStateColumnPick();
 }
