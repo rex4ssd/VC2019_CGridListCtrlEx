@@ -8,6 +8,7 @@
 #define IDD_MFCAPPLICATION1_DIALOG      102
 #define IDR_MAINFRAME                   128
 #define IDC_LIST2                       1001
+#define IDC_LIST1                       1001
 
 // Next default values for new objects
 // 

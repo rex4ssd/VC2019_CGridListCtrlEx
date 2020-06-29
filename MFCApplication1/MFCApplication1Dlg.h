@@ -1,6 +1,11 @@
 
 // MFCApplication1Dlg.h : header file
 //
+#include "afxcmn.h"
+#include "..\CGridListCtrlEx\CGridListCtrlGroups.h"
+
+#include "CListCtrl_DataModel.h"
+
 
 #pragma once
 
@@ -33,4 +38,10 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnLvnItemchangedList2(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnLvnItemchangedList1(NMHDR* pNMHDR, LRESULT* pResult);
+
+private:
+	CGridListCtrlGroups m_ListCtrl;
+	//CListCtrl_DataModel m_DataModel;
+
 };
