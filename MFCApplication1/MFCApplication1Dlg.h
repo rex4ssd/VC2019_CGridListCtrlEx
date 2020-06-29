@@ -42,6 +42,7 @@ public:
 
 private:
 	CGridListCtrlGroups m_ListCtrl;
-	//CListCtrl_DataModel m_DataModel;
+	CListCtrl_DataModel m_DataModel;
+	CImageList m_ImageList;
 
 };

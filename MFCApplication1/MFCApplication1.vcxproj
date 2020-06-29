@@ -242,6 +242,12 @@
     <None Include="res\MFCApplication1.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\IDI_FLGDEN.ICO" />
+    <Image Include="res\IDI_FLGFRAN.ICO" />
+    <Image Include="res\IDI_FLGGERM.ICO" />
+    <Image Include="res\IDI_FLGGREEC.ico" />
+    <Image Include="res\IDI_FLGSPAIN.ICO" />
+    <Image Include="res\IDI_FLGSWED.ICO" />
     <Image Include="res\MFCApplication1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

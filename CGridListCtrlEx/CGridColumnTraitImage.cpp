@@ -177,6 +177,8 @@ void CGridColumnTraitImage::Accept(CGridColumnTraitVisitor& visitor)
 //------------------------------------------------------------------------
 int CGridColumnTraitImage::AppendStateImages(CGridListCtrlEx& owner, CImageList& imagelist)
 {
+	//owner.GetExtendedStyle();
+
 	if (!(owner.GetExtendedStyle() & LVS_EX_SUBITEMIMAGES))
 		owner.SetExtendedStyle(owner.GetExtendedStyle() | LVS_EX_SUBITEMIMAGES);
 
