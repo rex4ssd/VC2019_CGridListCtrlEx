@@ -155,23 +155,5 @@
     <Image Include="res\MFCApplication1.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\IDI_FLGDEN.ICO">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\IDI_FLGFRAN.ICO">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\IDI_FLGGERM.ICO">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\IDI_FLGGREEC.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\IDI_FLGSPAIN.ICO">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\IDI_FLGSWED.ICO">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

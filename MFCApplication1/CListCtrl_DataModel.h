@@ -11,24 +11,20 @@ struct CListCtrl_DataRecord
 	CListCtrl_DataRecord()
 	{}
 
-	CListCtrl_DataRecord(const CString& city, const CString& country, COleDateTime year)
+	CListCtrl_DataRecord(const CString& city, const CString& country )
 		:m_City(city)
 		,m_Country(country)
-		,m_YearWon(year)
 	{}
 
 	CString	m_City;
 	CString	m_Country;
-	COleDateTime m_YearWon;
 
-	CString GetCellText(int col, bool title) const
+	CString GetCellText_Struct(int col, bool title) const
 	{
 		switch(col)
 		{
 		case 0: { static const CString title0(_T("Country")); return title ? title0 : m_Country; }
 		case 1: { static const CString title1(_T("Capital")); return title ? title1 : m_City; }
-		case 2: { static const CString title2(_T("European Championship")); return title ? title2 : m_YearWon.GetStatus()==m_YearWon.valid ? m_YearWon.Format() : CString(); }
-		case 3: { static const CString title3(_T("Wiki")); return title ? title3 : m_YearWon.GetStatus()==m_YearWon.valid ? m_YearWon.Format(_T("%Y")) : CString(); }
 		default:{ static const CString emptyStr; return emptyStr; }
 		}
 	}
@@ -53,14 +49,14 @@ public:
 	void InitDataModel()
 	{
 		m_Records.clear();
-		m_Records.push_back( CListCtrl_DataRecord(_T("Copenhagen"), _T("Denmark"), COleDateTime(1992,6,26,0,0,0)) );
-		m_Records.push_back( CListCtrl_DataRecord(_T("Berlin"), _T("Germany"), COleDateTime(1996,6,30,0,0,0)) );
-		m_Records.push_back( CListCtrl_DataRecord(_T("Paris"), _T("France"), COleDateTime(2000,7,2,0,0,0)) );
-		m_Records.push_back( CListCtrl_DataRecord(_T("Athen"), _T("Greece"), COleDateTime(2004,7,4,0,0,0)) );
-		m_Records.push_back( CListCtrl_DataRecord(_T("Stockholm"), _T("Sweden"), COleDateTime(0,0,0,0,0,0)) );
-		m_Records.push_back( CListCtrl_DataRecord(_T("Madrid"), _T("Spain"), COleDateTime(2008,6,29,0,0,0)) );
+		m_Records.push_back( CListCtrl_DataRecord(_T("Copenhagen"), _T("Denmark")));
+		m_Records.push_back( CListCtrl_DataRecord(_T("Berlin"), _T("Germany")));
+		m_Records.push_back( CListCtrl_DataRecord(_T("Paris"), _T("France")));
+		m_Records.push_back( CListCtrl_DataRecord(_T("Athen"), _T("Greece")));
+		m_Records.push_back( CListCtrl_DataRecord(_T("Stockholm"), _T("Sweden")) );
+		m_Records.push_back( CListCtrl_DataRecord(_T("Madrid"), _T("Spain")) );
 
-		if (m_RowMultiplier > 1)
+		if (m_RowMultiplier > 0)
 		{
 			vector<CListCtrl_DataRecord> rowset(m_Records);
 			m_Records.reserve((m_RowMultiplier-1) * rowset.size());
@@ -73,8 +69,15 @@ public:
 
 	void ShowAllDataModel()
 	{
+		CString s0, s1, s2;
+		
 		for (int i = 0; i < m_Records.size(); i++) {
-
+			s0 = m_Records.at(i).GetCellText_Struct(0, false);
+			s1 = m_Records.at(i).GetCellText_Struct(1, false);
+			s2 = m_Records.at(i).GetCellText_Struct(2, false);
+			//m_Records.at(i).m_City
+			TRACE( L"%d = %s, %s, %s\n", i, s0, s1, s2
+				);
 		}
 	}
 
@@ -94,7 +97,7 @@ public:
 					break;
 			}
 		}
-		return m_Records.at(lookupId).GetCellText(col, false);
+		return m_Records.at(lookupId).GetCellText_Struct(col, false);
 	}
 
 	vector<CString> GetCountries() const
@@ -109,7 +112,7 @@ public:
 
 	size_t GetRowIds() const { return m_Records.size(); }
 	int GetColCount() const { return CListCtrl_DataRecord().GetColCount(); }
-	CString GetColTitle(int col) const { return CListCtrl_DataRecord().GetCellText(col, true); }
+	CString GetColTitle(int col) const { return CListCtrl_DataRecord().GetCellText_Struct(col, true); }
 
 	vector<CListCtrl_DataRecord>& GetRecords() { return m_Records; }
 	void SetLookupTime(int lookupTimes) { m_LookupTime = lookupTimes; }
