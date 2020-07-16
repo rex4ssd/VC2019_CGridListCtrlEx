@@ -130,10 +130,12 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 		const CString& title = m_DataModel.GetColTitle(col);
 		TRACE(L"title = %s\n", m_DataModel.GetColTitle(col));
 		CGridColumnTrait* pTrait = NULL;
-		if (col == 0)	// Country
+		if (col == 0)	// Item
 		{
+			//pTrait = new CGridColumnTraitText;
 			CGridColumnTraitCombo* pComboTrait = new CGridColumnTraitCombo;
 			pComboTrait->SetShowDropDown(TRUE);//REX
+			//pComboTrait->SetStyle(10);
 			//pComboTrait->SetSingleClickEdit(TRUE);
 			//pComboTrait->SetStyle(2);
 			const vector<CString>& countries = m_DataModel.GetCountries();
@@ -143,15 +145,21 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 			}
 			pTrait = pComboTrait;
 		}
-		if (col == 1)	// City
+		if (col == 1)	// Context
 		{
 			pTrait = new CGridColumnTraitEdit;
+			//CGridColumnTraitCombo* pComboTrait1 = new CGridColumnTraitCombo;
+			//pTrait = pComboTrait1;
 		}
 
-		m_ListCtrl.InsertColumnTrait(col + 1, title, LVCFMT_LEFT, 100, col, pTrait);
+		m_ListCtrl.InsertColumnTrait(col + 1, title, LVCFMT_LEFT, 500, col, pTrait);
+		//m_ListCtrl.InsertColumnTrait()
+		//m_ListCtrl.InsertItem()
 	}
 
 	// Insert data into list-control by copying from datamodel
+	TRACE("GetRowIds = %d\n", m_DataModel.GetRowIds());
+
 	int nItem = 0;
 	for (size_t rowId = 0; rowId < m_DataModel.GetRowIds(); ++rowId)
 	{

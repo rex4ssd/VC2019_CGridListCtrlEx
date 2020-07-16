@@ -17,8 +17,8 @@
 //------------------------------------------------------------------------
 CGridColumnTraitCombo::CGridColumnTraitCombo()
 	:m_MaxItems(7)
-	,m_MaxWidth(200)
-	,m_ComboBoxStyle(WS_VSCROLL | WS_HSCROLL | CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_NOINTEGRALHEIGHT)
+	,m_MaxWidth(2)
+	,m_ComboBoxStyle(WS_VSCROLL | WS_HSCROLL | CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | CBS_NOINTEGRALHEIGHT)
 	,m_pComboBox(NULL)
 	,m_ShowDropDown(FALSE)
 {}

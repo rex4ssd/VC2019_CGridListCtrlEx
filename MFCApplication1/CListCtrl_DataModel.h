@@ -23,13 +23,13 @@ struct CListCtrl_DataRecord
 	{
 		switch(col)
 		{
-		case 0: { static const CString title0(_T("Country")); return title ? title0 : m_Country; }
-		case 1: { static const CString title1(_T("Capital")); return title ? title1 : m_City; }
+		case 0: { static const CString title0(_T("Item")); return title ? title0 : m_Country; }
+		case 1: { static const CString title1(_T("Context")); return title ? title1 : m_City; }
 		default:{ static const CString emptyStr; return emptyStr; }
 		}
 	}
 
-	int  GetColCount() const { return 4; }
+	int  GetColCount() const { return 2; } //set column number, Rex
 };
 
 class CListCtrl_DataModel
@@ -49,7 +49,7 @@ public:
 	void InitDataModel()
 	{
 		m_Records.clear();
-		m_Records.push_back( CListCtrl_DataRecord(_T("Copenhagen"), _T("Denmark")));
+		m_Records.push_back( CListCtrl_DataRecord(_T("Copenhagen................"), _T("Denmark................")));
 		m_Records.push_back( CListCtrl_DataRecord(_T("Berlin"), _T("Germany")));
 		m_Records.push_back( CListCtrl_DataRecord(_T("Paris"), _T("France")));
 		m_Records.push_back( CListCtrl_DataRecord(_T("Athen"), _T("Greece")));
